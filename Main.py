@@ -26,6 +26,8 @@ mnist = fetch_openml('mnist_784', version=1, as_frame=False)
 
 X, y = mnist["data"], mnist["target"]
 X_train, X_test, y_train, y_test = X[:60000], X[60000:], y[:60000], y[60000:]
+y_train = y_train.astype(np.uint8)
+y_test = y_test.astype(np.uint8)
 
 #Poly
 param_grid_poly = {
@@ -42,10 +44,10 @@ end_time_poly = time.time_ns()
 training_time_poly = end_time_poly - start_time_poly
 y_predicted_poly = grid_search_poly.predict(X_test)
 print("POLY")
-print("F1-score: ", f1_score(y_test, y_predicted_poly))
+print("F1-score: ", f1_score(y_test, y_predicted_poly), average='macro')
 print("Accuracy score: ", accuracy_score(y_test, y_predicted_poly))
-print("Precision score: ", precision_score(y_test, y_predicted_poly))
-print("Precision score: ", recall_score(y_test, y_predicted_poly))
+print("Precision score: ", precision_score(y_test, y_predicted_poly), average='macro')
+print("Precision score: ", recall_score(y_test, y_predicted_poly), average='macro')
 print("Time complexity: ", training_time_poly)
 print()
 
@@ -64,10 +66,10 @@ end_time_rbf = time.time_ns()
 training_time_rbf = end_time_rbf - start_time_rbf
 y_predicted_rbf = grid_search_rbf.predict(X_test)
 print("RBF")
-print("F1-score: ", f1_score(y_test, y_predicted_rbf))
+print("F1-score: ", f1_score(y_test, y_predicted_rbf), average='macro')
 print("Accuracy score: ", accuracy_score(y_test, y_predicted_rbf))
-print("Precision score: ", precision_score(y_test, y_predicted_rbf))
-print("Precision score: ", recall_score(y_test, y_predicted_rbf))
+print("Precision score: ", precision_score(y_test, y_predicted_rbf), average='macro')
+print("Precision score: ", recall_score(y_test, y_predicted_rbf), average='macro')
 print("Time complexity: ", training_time_rbf)
 print()
 
@@ -85,8 +87,8 @@ end_time_linear = time.time_ns()
 training_time_linear = end_time_linear - start_time_linear
 y_predicted_linear = grid_search_linear.predict(X_test)
 print("Linear")
-print("F1-score: ", f1_score(y_test, y_predicted_linear))
+print("F1-score: ", f1_score(y_test, y_predicted_linear), average='macro')
 print("Accuracy score: ", accuracy_score(y_test, y_predicted_linear))
-print("Precision score: ", precision_score(y_test, y_predicted_linear))
-print("Precision score: ", recall_score(y_test, y_predicted_linear))
+print("Precision score: ", precision_score(y_test, y_predicted_linear), average='macro')
+print("Precision score: ", recall_score(y_test, y_predicted_linear), average='macro')
 print("Time complexity: ", training_time_linear)
