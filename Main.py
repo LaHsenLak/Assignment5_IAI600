@@ -35,7 +35,7 @@ param_grid_poly = {
     }
 
 svm_clf_poly = SVC(kernel= 'poly')
-grid_search_poly = GridSearchCV(svm_clf_poly, param_grid_poly, cv=3, n_jobs=1)
+grid_search_poly = GridSearchCV(svm_clf_poly, param_grid_poly, cv=3, n_jobs=-1)
 start_time_poly = time.time_ns()
 grid_search_poly.fit(X_train, y_train)
 end_time_poly = time.time_ns()
@@ -57,7 +57,7 @@ param_grid_rbf = {
     }
 
 svm_clf_rbf = SVC(kernel= 'rbf')
-grid_search_rbf = GridSearchCV(svm_clf_rbf, param_grid_rbf, cv=3, n_jobs=1)
+grid_search_rbf = GridSearchCV(svm_clf_rbf, param_grid_rbf, cv=3, n_jobs=-1)
 start_time_rbf = time.time_ns()
 grid_search_rbf.fit(X_train, y_train)
 end_time_rbf = time.time_ns()
@@ -78,7 +78,7 @@ param_grid_linear = {
      }
 
 svm_clf_linear = SVC(kernel= 'linear')
-grid_search_linear = GridSearchCV(svm_clf_linear, param_grid_linear, cv=3, n_jobs=1)
+grid_search_linear = GridSearchCV(svm_clf_linear, param_grid_linear, cv=3, n_jobs=-1)
 start_time_linear = time.time_ns()
 grid_search_linear.fit(X_train, y_train)
 end_time_linear = time.time_ns()
