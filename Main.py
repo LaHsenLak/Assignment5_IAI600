@@ -38,16 +38,17 @@ param_grid_poly = {
 
 svm_clf_poly = SVC(kernel= 'poly')
 grid_search_poly = GridSearchCV(svm_clf_poly, param_grid_poly, cv=3, n_jobs=-1)
-start_time_poly = time.time_ns()
+start_time_poly = time.time()
 grid_search_poly.fit(X_train, y_train)
-end_time_poly = time.time_ns()
+end_time_poly = time.time()
 training_time_poly = end_time_poly - start_time_poly
 y_predicted_poly = grid_search_poly.predict(X_test)
 print("POLY")
-print("F1-score: ", f1_score(y_test, y_predicted_poly), average='macro')
+print("Best params", grid_search_poly.best_params_)
+print("F1-score: ", f1_score(y_test, y_predicted_poly, average='macro'))
 print("Accuracy score: ", accuracy_score(y_test, y_predicted_poly))
-print("Precision score: ", precision_score(y_test, y_predicted_poly), average='macro')
-print("Precision score: ", recall_score(y_test, y_predicted_poly), average='macro')
+print("Precision score: ", precision_score(y_test, y_predicted_poly, average='macro'))
+print("Recall score: ", recall_score(y_test, y_predicted_poly, average='macro'))
 print("Time complexity: ", training_time_poly)
 print()
 
@@ -60,16 +61,17 @@ param_grid_rbf = {
 
 svm_clf_rbf = SVC(kernel= 'rbf')
 grid_search_rbf = GridSearchCV(svm_clf_rbf, param_grid_rbf, cv=3, n_jobs=-1)
-start_time_rbf = time.time_ns()
+start_time_rbf = time.time()
 grid_search_rbf.fit(X_train, y_train)
-end_time_rbf = time.time_ns()
+end_time_rbf = time.time()
 training_time_rbf = end_time_rbf - start_time_rbf
 y_predicted_rbf = grid_search_rbf.predict(X_test)
 print("RBF")
-print("F1-score: ", f1_score(y_test, y_predicted_rbf), average='macro')
+print("Best params", grid_search_rbf.best_params_)
+print("F1-score: ", f1_score(y_test, y_predicted_rbf, average='macro'))
 print("Accuracy score: ", accuracy_score(y_test, y_predicted_rbf))
-print("Precision score: ", precision_score(y_test, y_predicted_rbf), average='macro')
-print("Precision score: ", recall_score(y_test, y_predicted_rbf), average='macro')
+print("Precision score: ", precision_score(y_test, y_predicted_rbf, average='macro'))
+print("Recall score: ", recall_score(y_test, y_predicted_rbf, average='macro'))
 print("Time complexity: ", training_time_rbf)
 print()
 
@@ -80,15 +82,16 @@ param_grid_linear = {
      }
 
 svm_clf_linear = SVC(kernel= 'linear')
-grid_search_linear = GridSearchCV(svm_clf_linear, param_grid_linear, cv=3, n_jobs=-1)
-start_time_linear = time.time_ns()
+grid_search_linear = GridSearchCV(svm_clf_linear, param_grid_linear, cv=3, n_jobs=-1)          #Best params are: 
+start_time_linear = time.time()
 grid_search_linear.fit(X_train, y_train)
-end_time_linear = time.time_ns()
+end_time_linear = time.time()
 training_time_linear = end_time_linear - start_time_linear
 y_predicted_linear = grid_search_linear.predict(X_test)
 print("Linear")
-print("F1-score: ", f1_score(y_test, y_predicted_linear), average='macro')
+print("Best params", grid_search_linear.best_params_)
+print("F1-score: ", f1_score(y_test, y_predicted_linear, average='macro'))
 print("Accuracy score: ", accuracy_score(y_test, y_predicted_linear))
-print("Precision score: ", precision_score(y_test, y_predicted_linear), average='macro')
-print("Precision score: ", recall_score(y_test, y_predicted_linear), average='macro')
+print("Precision score: ", precision_score(y_test, y_predicted_linear, average='macro'))
+print("Recall score: ", recall_score(y_test, y_predicted_linear, average='macro'))
 print("Time complexity: ", training_time_linear)
