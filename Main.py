@@ -37,7 +37,7 @@ param_grid_poly = {
     }
 
 svm_clf_poly = SVC(kernel= 'poly')
-grid_search_poly = GridSearchCV(svm_clf_poly, param_grid_poly, cv=3, n_jobs=-1)
+grid_search_poly = GridSearchCV(svm_clf_poly, param_grid_poly, cv=3, n_jobs=-1)   # Best params {'C': 10, 'coef0': 1, 'degree': 4}
 start_time_poly = time.time()
 grid_search_poly.fit(X_train, y_train)
 end_time_poly = time.time()
